@@ -1,6 +1,4 @@
-/// <reference path="../pb_data/types.d.ts" />
-
-// cron : ca tourne tt seul 2x/jour
+// cron : s'exécute en auto 2x/jour pr mettre a jour
 cronAdd("rappels_sync", "0 */12 * * *", () => {
   console.log("=== Début sync rappels ===");
 
@@ -60,7 +58,7 @@ cronAdd("rappels_sync", "0 */12 * * *", () => {
   console.log("=== Sync terminée ===");
 });
 
-// ptite route manuelle si jve lancer la sync moi mm depuis lnavigateur
+// ptite route manuelle pr lancer la sync depuis le navigateur
 routerAdd("GET", "/api/sync-rappels", (e) => {
   try {
     console.log("=== Début sync rappels (manuelle) ===");

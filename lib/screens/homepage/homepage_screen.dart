@@ -45,7 +45,7 @@ class HomePage extends StatelessWidget {
             onChanged: (value) => barcode = value,
           ),
           actions: [
-            // bton pr annul
+            // bouton pr annuler
             TextButton(
               onPressed: () => Navigator.pop(context),
               child: const Text('Annuler'),
@@ -53,7 +53,7 @@ class HomePage extends StatelessWidget {
             TextButton(
               onPressed: () {
                 Navigator.pop(context);
-                // g géré l cas ou le mec clik alor ki a ri1 ecri pour pa ksa crash
+                // check si c'est pas vide pr éviter de push un truc vide
                 if (barcode.isNotEmpty) {
                   context.push('/product', extra: barcode);
                 }

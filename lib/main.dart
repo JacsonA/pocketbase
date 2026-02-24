@@ -12,15 +12,16 @@ void main() {
   runApp(const MyApp());
 }
 
-final GoRouter router = GoRouter(
+final GoRouter _router = GoRouter(
   routes: <RouteBase>[
-    // route pr la page d'acceuil du tel
+    // route pr l'accueil
     GoRoute(path: '/', builder: (_, __) => const HomePage()),
     GoRoute(
       path: '/product',
       builder: (_, GoRouterState state) =>
           ProductPage(barcode: state.extra as String),
     ),
+    // route pr la page de details (avec le check PDF)
     GoRoute(
       path: '/recall',
       builder: (_, GoRouterState state) {

@@ -19,7 +19,7 @@ class ProductTab0 extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        // bn 1 si ya un rappl on l'affich tout en haut
+        // si ya un rappel on l'affiche tout en haut de la page
         Consumer<RecallFetcher>(
           builder: (context, fetcher, child) {
             final state = fetcher.state;
@@ -27,7 +27,7 @@ class ProductTab0 extends StatelessWidget {
               return RecallBanner(
                 recall: state.recall,
                 onTap: () {
-                  // kn on clik ca envoi sr la paj detail du prd raptle
+                  // ça navigue vers l'écran de détail du rappel s'il y en a un
                   context.push('/recall', extra: state.recall);
                 },
               );

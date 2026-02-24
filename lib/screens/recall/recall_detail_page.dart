@@ -31,7 +31,7 @@ class RecallDetailPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // limage du prod (si elle exste)
+            // afficher l'image du produit (si dispo)
             if (recall.lienImage != null && recall.lienImage!.isNotEmpty)
               Center(
                 child: ClipRRect(
@@ -46,7 +46,7 @@ class RecallDetailPage extends StatelessWidget {
               ),
             const SizedBox(height: 24),
 
-            // ptites infos de base
+            // infos principales sur le prod
             _buildSectionTitle('Produit'),
             _buildInfoRow('Libellé', recall.libelle),
             _buildInfoRow('Marque', recall.marqueProduit),
@@ -95,7 +95,7 @@ class RecallDetailPage extends StatelessWidget {
   Widget _buildInfoRow(String label, String? value) {
     if (value == null || value.isEmpty) return const SizedBox.shrink();
 
-    // dfois lapi repond avc des barres | donc fo remplace par des ptits points
+    // l'api sépare parfois des listes avec des | donc fo formater avec des listes a puces
     final formattedValue = value.replaceAll('|', '\n• ');
 
     return Padding(
