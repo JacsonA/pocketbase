@@ -5,8 +5,6 @@ import 'package:formation_flutter/res/app_icons.dart';
 import 'package:formation_flutter/screens/product/product_fetcher.dart';
 import 'package:formation_flutter/screens/product/states/success/product_header.dart';
 import 'package:formation_flutter/screens/product/states/success/tabs/product_tab0.dart';
-import 'package:formation_flutter/screens/product/states/success/tabs/product_tab1.dart';
-import 'package:formation_flutter/screens/product/states/success/tabs/product_tab2.dart';
 import 'package:formation_flutter/screens/product/states/success/tabs/product_tab3.dart';
 import 'package:provider/provider.dart';
 
@@ -39,9 +37,9 @@ class _ProductPageBodyState extends State<ProductPageBody> {
           Expanded(
             child: CustomScrollView(
               slivers: <Widget>[
-                ProductPageHeader(),
+                const ProductPageHeader(),
                 SliverPadding(
-                  padding: EdgeInsetsDirectional.only(top: 10.0),
+                  padding: const EdgeInsetsDirectional.only(top: 10.0),
                   sliver: SliverFillRemaining(
                     fillOverscroll: true,
                     hasScrollBody: false,
@@ -75,19 +73,11 @@ class _ProductPageBodyState extends State<ProductPageBody> {
       children: <Widget>[
         Offstage(
           offstage: _tab != ProductDetailsCurrentTab.summary,
-          child: ProductTab0(),
-        ),
-        Offstage(
-          offstage: _tab != ProductDetailsCurrentTab.info,
-          child: ProductTab1(),
-        ),
-        Offstage(
-          offstage: _tab != ProductDetailsCurrentTab.nutrition,
-          child: ProductTab2(),
+          child: const ProductTab0(),
         ),
         Offstage(
           offstage: _tab != ProductDetailsCurrentTab.nutritionalValues,
-          child: ProductTab3(),
+          child: const ProductTab3(),
         ),
       ],
     );
@@ -96,8 +86,6 @@ class _ProductPageBodyState extends State<ProductPageBody> {
 
 enum ProductDetailsCurrentTab {
   summary(AppIcons.tab_barcode),
-  info(AppIcons.tab_fridge),
-  nutrition(AppIcons.tab_nutrition),
   nutritionalValues(AppIcons.tab_array);
 
   const ProductDetailsCurrentTab(this.icon);
@@ -106,9 +94,6 @@ enum ProductDetailsCurrentTab {
 
   String label(AppLocalizations appLocalizations) => switch (this) {
     ProductDetailsCurrentTab.summary => appLocalizations.product_tab_summary,
-    ProductDetailsCurrentTab.info => appLocalizations.product_tab_properties,
-    ProductDetailsCurrentTab.nutrition =>
-      appLocalizations.product_tab_nutrition,
     ProductDetailsCurrentTab.nutritionalValues =>
       appLocalizations.product_tab_nutrition_facts,
   };
