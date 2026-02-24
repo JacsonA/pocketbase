@@ -124,6 +124,8 @@ class _Nutriscore extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final String assetName = _findAssetName();
+
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -133,7 +135,17 @@ class _Nutriscore extends StatelessWidget {
           style: context.theme.title3,
         ),
         const SizedBox(height: 5.0),
-        Image.asset(_findAssetName(), height: 42.0),
+        if (assetName.isNotEmpty)
+          Image.asset(assetName, height: 42.0)
+        else
+          Text(
+            "Non applicable",
+            style: const TextStyle(
+              fontSize: 16,
+              color: AppColors.grey2,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
       ],
     );
   }
@@ -145,7 +157,7 @@ class _Nutriscore extends StatelessWidget {
       ProductNutriScore.C => 'res/drawables/nutriscore_c.png',
       ProductNutriScore.D => 'res/drawables/nutriscore_d.png',
       ProductNutriScore.E => 'res/drawables/nutriscore_e.png',
-      ProductNutriScore.unknown => 'TODO',
+      ProductNutriScore.unknown => '',
     };
   }
 }
